@@ -16,6 +16,21 @@ app.get("/", (req, res) => {
     })
 
 });
+//creating route for create
+app.post("/create",(req,res)=>{
+    // title and description are name of input fields
+    fs.writeFile(`./files/${req.body.title.split(" ").join("-")}.txt`,req.body.description,(err)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("file created");
+        }
+        //to get back to same page after creating file
+        res.redirect("/");
+    })
+    // console.log(req.body);
+    // res.send("data received");
+})
 
 
 app.listen(3000, () => {
