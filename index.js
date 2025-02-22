@@ -45,6 +45,26 @@ app.get("/edit/:filename",(req,res)=>{
         res.render("edit",{content:data,file:file});
     })
 })
+app.post("/edit/:filename",(req,res)=>{
+    const file=req.params.filename;
+    const content=fs.readFile(`./files/${req.params.filename}`,"utf-8",(err,data)=>{
+        fs.writeFile(`./files/${req.body.title.split(" ").join("-")}`,req.body.description,(err)=>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log("file created");
+            }
+        })
+        res.redirect("/");
+    })
+})
+//deleting route
+app.get("/delete/:filename",(req,res)=>{
+    fs.unlink(`./files/${req.params.filename}`,(err)=>{
+        res.redirect("/");
+    })
+})
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
