@@ -22,8 +22,8 @@ This project is **just for practice purpose** and is not meant for production us
 It currently **does not use a database** and stores notes as files.
 
 ## 🛠 Future Improvements (For Learning)
-✅ Use MongoDB instead of file storage
-✅ Implement REST API for better integration
-✅ Add User Authentication for security
-✅ Improve UI/UX with better design
+- ✅ Use MongoDB instead of file storage
+- ✅ Implement REST API for better integration
+- ✅ Add User Authentication for security
+- ✅ Improve UI/UX with better design
 
