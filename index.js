@@ -46,9 +46,14 @@ app.get("/edit/:filename",(req,res)=>{
     })
 })
 app.post("/edit/:filename",(req,res)=>{
-    const file=req.params.filename;
-    const content=fs.readFile(`./files/${req.params.filename}`,"utf-8",(err,data)=>{
-        fs.writeFile(`./files/${req.body.title.split(" ").join("-")}`,req.body.description,(err)=>{
+    const oldFile = `./files/${req.params.filename}`;
+    const newFile = `./files/${req.body.title.split(" ").join("-")}`;
+    
+    if (fs.existsSync(oldFile)) {
+        fs.renameSync(oldFile, newFile);  // Rename instead of creating a new file
+    }
+   
+        fs.writeFile(newFile,req.body.description,(err)=>{
             if(err){
                 console.log(err);
             }else{
@@ -56,7 +61,7 @@ app.post("/edit/:filename",(req,res)=>{
             }
         })
         res.redirect("/");
-    })
+   
 })
 //deleting route
 app.get("/delete/:filename",(req,res)=>{
