@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+      <a href="/" class="pt-10 text-blue-500 inline-block mt-3 ml-13">
+        Go Back
+      </a>
+   <form action="/edit/<%= file %>" method="post">
+    <input class="block w-full rounded-md px-5 py-2 bg-zinc-700 mt-3 outline-none text-white" type="text" name="title" value="<%= file.split("-").join(" ") %>">
+    <textarea class="block w-full rounded-md px-5 py-2 bg-zinc-700 resize-none mt-3 outline-none text-white" name="description" id="" cols="30" rows="10"><%= content %></textarea>
+    <button class="mt-2 bg-blue-500 text-white px-5 py-2 rounded-md cursor-pointer" type="submit" value="submit">Edit</button>
+   </form>
+    </div>
+  </body>
+</html>
