@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+      <h1 class="text-3xl px-10 pt-10 font-bold text-white">
+        <%= file.split("-").join(" ") %>
+      </h1>
+      <h2 class="text-2xl px-17 text-white"><%= content %></h2>
+      <a href="/" class="text-blue-500 inline-block mt-3 ml-13">
+        Go Back
+       </a>
+
+    </div>
+    <div class="edit">
+        <a href="/edit/<%= file %>" class="text-blue-500 inline-block mt-3 ">
+            Edit
+           </a>
+    </div>
+  </body>
+</html>
