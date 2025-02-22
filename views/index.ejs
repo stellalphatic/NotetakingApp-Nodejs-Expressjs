@@ -18,13 +18,23 @@
     <div class=" tasks p-10 flex gap-3  flex-wrap">
         <% if(files.length>0){ %>
             <% files.forEach(file=>{ %>
+             
                 <div class=" task w-75 p-5 rounded-md bg-zinc-700 ml-10 mt-7 ">
+                 
                     <h1 class="text-2xl font-bold text-white">
                         <%= file.split("-").join(" ") %>
                     </h1>
-                    <a href="" class="text-blue-500 inline-block mt-3 ">
-                     
+                    <div class="w-full flex justify-between">
+                    <a href="/files/<%= file %>" class="text-blue-500 inline-block mt-3 ">
+                     Read More
                     </a>
+                    <a href="/edit/<%= file %>" class="text-yellow-500 inline-block mt-3 ">
+                        Edit
+                    </a>
+                    <a href="/delete/<%= file %>" class="text-red-500 inline-block mt-3 ">
+                        Delete
+                    </a>
+                    </div>
                  </div>
                 
             <% }) %>
