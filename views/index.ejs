@@ -17,8 +17,8 @@
     </div>
     <div class=" tasks p-10 flex gap-3  flex-wrap">
         <% if(files.length>0){ %>
+          <h1 class="text-white text-2xl font-bold  block w-full">Current Tasks:</h1>
             <% files.forEach(file=>{ %>
-             
                 <div class=" task w-75 p-5 rounded-md bg-zinc-700 ml-10 mt-7 ">
                  
                     <h1 class="text-2xl font-bold text-white">
@@ -34,12 +34,31 @@
                     <a href="/delete/<%= file %>" class="text-red-500 inline-block mt-3 ">
                         Delete
                     </a>
+                    <a href="/done/<%= file %>" class="text-green-500 inline-block mt-3 ">
+                      Done
+                  </a>
                     </div>
                  </div>
-                
+                 
             <% }) %>
         <% } else {  %>
             <h2 class="text-zinc-200 text-2xl font-bold ">No tasks Yet</h2>
+        <% } %>
+        <h1 class="text-white text-2xl font-bold mb-5 block w-full mt-10">Done Tasks:</h1>
+        <% if(done.length>0){ %>
+           <% done.forEach((file)=>{ %>
+            <div class="task w-75 p-5 rounded-md bg-zinc-700 ml-10 mt-7 ">
+                <h1 class="text-2xl font-bold text-white">
+                    <%= file.split("-").join(" ") %>
+                </h1>
+                <div class="w-full flex justify-between">
+                  <a href="/done/delete/<%= file %>" class="text-red-500 inline-block mt-3 ">Delete</a>
+                  <a href="/done/restore/<%= file %>" class="text-green-500 inline-block mt-3 ">Restore</a>
+                </div>
+            </div>
+           <% }) %>
+        <% } else { %>
+            <h2 class="ml-10 text-zinc-200  font-bold ">No done tasks Yet</h2>
         <% } %>
        
     </div>
