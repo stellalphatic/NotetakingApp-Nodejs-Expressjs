@@ -96,6 +96,26 @@ app.get("/done/delete/:filename",(req,res)=>{
         res.redirect("/");
     })
 })
+//restoring done route
+app.get("/done/restore/:filename",(req,res)=>{
+    fs.readFile(`files/done/${req.params.filename}`,"utf-8",(err,data)=>{
+        fs.writeFile(`files/tasks/${req.params.filename}`,data,(err)=>{ 
+            if(err){
+                console.log(err);
+            }else{
+                console.log("restored");
+            }
+        })
+        fs.unlink(`files/done/${req.params.filename}`,(err)=>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log("deleted");
+            }
+        })
+        res.redirect("/");
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
